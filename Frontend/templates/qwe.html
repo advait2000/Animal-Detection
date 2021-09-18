@@ -1,6 +1,10 @@
 <html>
 <body>
-
+{% if filename %}
+	<div>
+		<img width="500" height="600" src="{{ url_for('display_image', filename=filename) }}">
+	</div>
+{% endif %}
 
 <h1>{{data}}</h1>
 

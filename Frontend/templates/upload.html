@@ -1,29 +1,117 @@
-<!doctype html>
-<title>Python Flask Image Upload and Display Example</title>
-<h2>Select an image to upload and display</h2>
-<p>
-	{% with messages = get_flashed_messages() %}
-	  {% if messages %}
-		<ul>
-		{% for message in messages %}
-		  <li>{{ message }}</li>
-		{% endfor %}
-		</ul>
-	  {% endif %}
-	{% endwith %}
-</p>
-{% if filename %}
-	<div>
-		<img src="{{ url_for('display_image', filename=filename) }}">
-	</div>
-{% endif %}
-<form method="post" action="/" enctype="multipart/form-data">
-    <dl>
-		<p>
-			<input type="file" name="file" autocomplete="off" required>
-		</p>
-    </dl>
-    <p>
-		<input type="submit" value="Submit">
-	</p>
-</form>
+    <!doctype html>
+    <title>Animal Detection</title>
+    <html>
+        <style type="text/css"> 
+            div#heading{ 
+                position: absolute; 
+                top: 100px; 
+                right: 0px}
+            
+            #homepic{ 
+                background-image: url('static/background.jpg'); 
+
+  /* Set a specific height */ 
+                height: 700px; 
+
+  /* Create the parallax scrolling effect */ 
+                background-attachment: fixed; 
+                background-position: center; 
+                background-repeat: no-repeat; 
+                background-size: cover; 
+            }
+            #heading{
+                position: absolute;
+                float: center;
+                top: 40%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-family: "Bell MT"; 
+                font-size: 90px; 
+                background-color: transparent;
+                background-color: (0, 0, 0, 0.7);
+                color: white;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            #upload{
+                position: relative;
+                height: 500px; 
+                
+                opacity: 0.5; 
+                width:auto; 
+            }
+            
+            #sub{
+                
+                text-align: center; 
+                float: center; 
+                font-family: "Bell MT"; 
+                color: black;
+                font-size:50px;
+                color: black;
+            }
+            
+            #final{
+                float: center;
+                color: white; /* Text color */
+                background-color: ivory; /* Remove background color */
+                border: px solid gray; /* Border thickness, line style, and color */
+                border-radius: 5px; /* Adds curve to border corners */
+                text-transform: uppercase; 
+                font-size:20px;
+                font-family: "Bell MT"; 
+                color: black;
+                text-align: center;
+            }
+            
+            #file{
+                float: center;
+                color: white; /* Text color */
+                border: px solid gray; /* Border thickness, line style, and color */
+                border-radius: 5px; /* Adds curve to border corners */
+                text-transform: uppercase; 
+                font-size:20px;
+                font-family: "Bell MT"; 
+                color: black;
+                text-align: center;
+            }
+        </style> 
+    <body>
+    <div id="homepic" > 
+        <h2 id='heading'>Animal Classification</h2>    
+        <a id="top"></a> 
+    </div>
+    <div id="upload">
+        
+        <h2 id="sub">Select an image to upload and display</h2>
+        <p>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </p>
+        {% if filename %}
+            
+                <img src="{{ url_for('display_image', filename=filename) }}">
+            
+        {% endif %}
+        
+            <form id='file' method="post" action="/" enctype="multipart/form-data">
+                <dl>
+                <p>
+                    <input id='file' type="file" name="file" autocomplete="off" required>
+                </p>
+            </dl>
+            
+                <input id='final' type="submit" value="Submit">
+            
+            </form>
+    </div>
+    </body>
+    </html>

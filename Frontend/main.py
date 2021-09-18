@@ -46,12 +46,13 @@ def upload_image():
 		score = tf.nn.softmax(predictions[0])
 
 		a=(
-    		"This image most likely belongs to {} with a {:.2f} percent confidence."
+    		"This image most likely belongs to {} ."
     		.format(class_names[np.argmax(score)], 100 * np.max(score))
 		)
 		return render_template(
             "qwe.html",
             data=a,
+            filename=filename 
         )
 
 	else:
